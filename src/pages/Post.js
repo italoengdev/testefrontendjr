@@ -25,7 +25,7 @@ function Post() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-8 offset-md-2">
+        <div className="col-md-8 offset-md-2 my-2">
           <div className="d-flex justify-content-center">
             <Link to="/" className="btn btn-secondary mb-3 mx-auto">
               Back to All Posts

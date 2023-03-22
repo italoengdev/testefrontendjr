@@ -6,7 +6,7 @@ function Navbar() {
   const handleToggle = () => setShowMenu(!showMenu);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light mx-1">
       <a className="navbar-brand" href="/">
         Blog-Teste
       </a>

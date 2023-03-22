@@ -1,5 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import {
+  FaEnvelope,
+  FaPhone,
+  FaGlobe,
+  FaMapMarkerAlt,
+  FaBuilding
+} from 'react-icons/fa'
 
 function UsersPage() {
   const [users, setUsers] = useState([])
@@ -40,7 +47,7 @@ function UsersPage() {
                 }`}
                 onClick={() => handleUserClick(user)}
               >
-               Username: {user.username} - From: {user.address.city}
+                Username: {user.username} - From: {user.address.city}
               </li>
             ))}
           </ul>
@@ -50,27 +57,34 @@ function UsersPage() {
             <div className="card">
               <div className="card-body">
                 <h2>{selectedUser.name}</h2>
-                <p className="mb-1">Username: {selectedUser.username}</p>
-                <p className="mb-1">Email: {selectedUser.email}</p>
+                <p className="mb-1">
+                  <FaEnvelope className="d-inline mx-1" />
+                  {selectedUser.email}
+                </p>
+                <p className="mb-1">
+                  <FaPhone className="d-inline mx-1" />
+                  {selectedUser.phone}
+                </p>
+                <p className="mb-1">
+                  <FaGlobe className="d-inline mx-1" />
+                  {selectedUser.website}
+                </p>
                 {showMoreInfo && (
                   <>
-                    <p className="mb-1">Phone: {selectedUser.phone}</p>
-                    <p className="mb-1">Website: {selectedUser.website}</p>
                     <h3>Address:</h3>
                     <p className="mb-1">
-                      Street: {selectedUser.address.street}
-                    </p>
-                    <p className="mb-1">Suite: {selectedUser.address.suite}</p>
-                    <p className="mb-1">City: {selectedUser.address.city}</p>
-                    <p className="mb-1">
-                      Zipcode: {selectedUser.address.zipcode}
+                      <FaMapMarkerAlt className="d-inline mx-1" />
+                      {selectedUser.address.street},{' '}
+                      {selectedUser.address.suite}, {selectedUser.address.city},{' '}
+                      {selectedUser.address.zipcode}
                     </p>
                     <h3>Company:</h3>
-                    <p className="mb-1">Name: {selectedUser.company.name}</p>
                     <p className="mb-1">
-                      Catchphrase: {selectedUser.company.catchPhrase}
+                      <FaBuilding className="d-inline mx-1" />
+                      {selectedUser.company.name},{' '}
+                      {selectedUser.company.catchPhrase},{' '}
+                      {selectedUser.company.bs}
                     </p>
-                    <p className="mb-1">BS: {selectedUser.company.bs}</p>
                   </>
                 )}
                 <button

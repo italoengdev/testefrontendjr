@@ -48,21 +48,28 @@ function BlogPosts() {
     'https://randomuser.me/api/portraits/women/4.jpg'
   ]
 
-  function getRandomUserImage() {
-    const index = Math.floor(Math.random() * userImages.length)
-    return userImages[index]
+  const [postImages, setPostImages] = useState({})
+
+  function getRandomUserImage(postId) {
+    if (!postImages[postId]) {
+      // Generate a random user image URL for this post and save it in the map
+      const index = Math.floor(Math.random() * userImages.length)
+      postImages[postId] = userImages[index]
+      setPostImages(postImages)
+    }
+    return postImages[postId]
   }
 
   return (
     <div>
       <div className="container">
-        <h1 className="text-center my-3">Professional Blog</h1>
+        <h1 className="text-center my-3">Alkabot Blog</h1>
         <div className="row">
           {currentPosts.map(post => (
             <div key={post.id} className="col-md-6 mb-4">
               <div className="card h-100">
                 <img
-                  src={getRandomUserImage()}
+                  src={getRandomUserImage(post.id)}
                   width={150}
                   height={150}
                   className="rounded mx-auto mt-2"
