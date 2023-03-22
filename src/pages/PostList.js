@@ -31,7 +31,7 @@ function BlogPosts() {
     setCurrentPage(pageNumber)
   }
 
-  const postsPerPage = 4
+  const postsPerPage = 6
   const indexOfLastPost = currentPage * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
@@ -62,13 +62,11 @@ function BlogPosts() {
             <div key={post.id} className="col-md-6 mb-4">
               <div className="card h-100">
                 <img
-                  
                   src={getRandomUserImage()}
                   width={150}
                   height={150}
                   className="rounded mx-auto mt-2"
                   alt="User"
-                  
                 />
                 <div className="card-body">
                   <Link to={`/post/${post.id}`}>
@@ -94,9 +92,14 @@ function BlogPosts() {
         <div className="row mt-3">
           <div className="col">
             <nav>
-              <ul className="pagination justify-content-center">
+              <ul className="pagination justify-content-center d-none d-md-flex">
                 {pageNumbers.map(number => (
-                  <li key={number} className="page-item">
+                  <li
+                    key={number}
+                    className={`page-item${
+                      currentPage === number ? ' active' : ''
+                    }`}
+                  >
                     <button
                       className="page-link"
                       onClick={() => handlePageChange(number)}
@@ -106,6 +109,35 @@ function BlogPosts() {
                   </li>
                 ))}
               </ul>
+              <div className="d-md-none">
+                <nav>
+                  <ul className="pagination justify-content-between">
+                    {currentPage > 1 && (
+                      <li className="page-item">
+                        <button
+                          className="page-link"
+                          onClick={() => handlePageChange(currentPage - 1)}
+                        >
+                          Previous
+                        </button>
+                      </li>
+                    )}
+                    <li className="page-item">
+                      <span className="page-link">{currentPage}</span>
+                    </li>
+                    {currentPage < pageNumbers.length && (
+                      <li className="page-item">
+                        <button
+                          className="page-link"
+                          onClick={() => handlePageChange(currentPage + 1)}
+                        >
+                          Next
+                        </button>
+                      </li>
+                    )}
+                  </ul>
+                </nav>
+              </div>
             </nav>
           </div>
         </div>
