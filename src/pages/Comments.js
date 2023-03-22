@@ -16,14 +16,14 @@ function Comments({ postId }) {
   }, [postId])
 
   return (
-    <div className="card mt-3">
+    <div className="card mt-3 bg-secondary">
       <div className="card-header">
         <h5>Comments</h5>
       </div>
-      <ul className="list-group list-group-flush">
+      <ul className="list-group list-group-flush ">
         {comments.map(comment => (
-          <li key={comment.id} className="list-group-item">
-            <h6>{comment.name}</h6>
+          <li key={comment.id} className="list-group-item bg-light">
+            <h5>Name: {comment.name}</h5>
             <h6>{comment.email}</h6>
             <p>{comment.body}</p>
           </li>
