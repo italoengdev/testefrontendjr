@@ -23,7 +23,7 @@ function Comments({ postId }) {
       <ul className="list-group list-group-flush ">
         {comments.map(comment => (
           <li key={comment.id} className="list-group-item bg-light">
-            <h5>Name: {comment.name}</h5>
+            <h5>{comment.name}</h5>
             <h6>{comment.email}</h6>
             <p>{comment.body}</p>
           </li>
